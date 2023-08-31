@@ -9,7 +9,7 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HistoryPageController());
-
+    controller.getHistoryFromDB();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
@@ -35,9 +35,17 @@ class HistoryPage extends StatelessWidget {
               child: const Text('도움말')),
         ],
       ),
-      body: ListView(
-        children: ["1", "2"].map((e) => Text(e.toString())).toList(),
-      ),
+      body: Obx(() => ListView(
+            children: controller.historyList
+                .map((e) => Card(
+                      child: ListTile(
+                        title: Text(e.question.substring(0, 20)),
+                        subtitle: Text(e.answer),
+                        trailing: Text(e.date),
+                      ),
+                    ))
+                .toList(),
+          )),
     );
   }
 }

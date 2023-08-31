@@ -19,6 +19,12 @@ class MainPage extends StatelessWidget {
         actions: [
           TextButton(
               onPressed: () {
+                controller.downloadFile();
+                print("업데이트 버튼 클릭");
+              },
+              child: const Text('업데이트')),
+          TextButton(
+              onPressed: () {
                 Get.to(() => HistoryPage());
               },
               child: const Text('기록보기')),
@@ -69,7 +75,7 @@ class MainPage extends StatelessWidget {
                             ],
                             value: controller.mainType.value,
                             onChanged: (value) {
-                              print(value);
+                              //print(value);
                               if (value == "sql") {
                                 controller.subType.value = "mysql";
                               } else {
@@ -95,7 +101,7 @@ class MainPage extends StatelessWidget {
                                   ],
                                 value: controller.subType.value,
                                 onChanged: (value) {
-                                  print(value);
+                                  //print(value);
                                   controller.subType.value = value!;
                                 })
                             : DropdownButton(

@@ -15,6 +15,15 @@ class mainPageController extends GetxController {
 
   TextEditingController modelTextController = TextEditingController();
 
+  //Download txt file from aws s3
+  void downloadFile() async {
+    //s3://coding.mooner.prompt/coding_mooner_prompt.rtf
+    var url = Uri.parse('https://s3.ap-northeast-2.amazonaws.com/coding.mooner.prompt/coding_mooner_prompt.rtf');
+    var response = await http.get(url);
+    var body = response.body;
+    print(body);
+  }
+
   getAnswer() async {
     if (questionTextController.value.text == "") {
       Get.dialog(
