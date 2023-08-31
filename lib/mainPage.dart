@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.pink,
         title: const Text('나의 작은 씨니어 개발자...코딩무너'),
-        leading: Image(
+        leading: const Image(
           image: AssetImage('images/128.png'),
         ),
         actions: [
@@ -25,8 +25,8 @@ class MainPage extends StatelessWidget {
           TextButton(
               onPressed: () {
                 Get.dialog(
-                  AlertDialog(
-                    title: const Text("도움말"),
+                  const AlertDialog(
+                    title: Text("도움말"),
                     content: Text("Ollama 설치 가이드, 사용법 등에 대한 도움말이 들어갈 예정입니다."),
                   ),
                 );
@@ -139,7 +139,7 @@ class MainPage extends StatelessWidget {
               ),
               Obx(() => Container(
                     child: controller.loading.value
-                        ? Center(
+                        ? const Center(
                             child: CircularProgressIndicator(),
                           )
                         : Padding(
