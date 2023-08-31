@@ -67,12 +67,10 @@ class mainPageController extends GetxController {
 
       DB.insert(question, finalResult);
     } catch (e) {
-      print("error : $e");
-
       Get.dialog(
-        const AlertDialog(
+        AlertDialog(
           title: Text("미안...에러야..."),
-          content: Text("로컬에 Ollama는 실행 됐어? 모르면 도움말 확인!"),
+          content: Text("로컬에 Ollama는 실행 됐어? 모르면 도움말 확인! \n\n error : $e "),
         ),
       );
     } finally {
