@@ -123,7 +123,7 @@ class MainPage extends StatelessWidget {
                             height: MediaQuery.sizeOf(context).height * 0.05,
                             child: TextField(
                                 controller: controller.modelTextController,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   hintText: 'codellama',
                                 ))),
@@ -187,7 +187,7 @@ class MainPage extends StatelessWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: ListView(
                           children: [
-                            Text(controller.answer.value),
+                            SelectableText(controller.answer.value),
                           ],
                         ),
                       ),
