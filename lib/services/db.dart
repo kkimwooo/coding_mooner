@@ -4,12 +4,13 @@ class DB {
   static Database? _db;
 
   static Future<void> init() async {
+    print("init DB");
     _db = await openDatabase(
-      'my_little_senior_dev.db',
+      'coding_mooner.db',
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE IF NOT EXISTS my_little_senior_dev (id INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT, answer TEXT)',
+          'CREATE TABLE IF NOT EXISTS coding_mooner (id INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT, answer TEXT, date TEXT)',
         );
       },
     );
@@ -17,10 +18,11 @@ class DB {
 
   static Future<void> insert(String question, String answer) async {
     await _db!.insert(
-      'my_little_senior_dev',
+      'coding_mooner',
       {
         'question': question,
         'answer': answer,
+        'date': DateTime.now().toString(),
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -29,7 +31,7 @@ class DB {
   //query one item
   static Future<Map<String, dynamic>> query(int id) async {
     List<Map<String, dynamic>> result = await _db!.query(
-      'my_little_senior_dev',
+      'coding_mooner',
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -37,12 +39,12 @@ class DB {
   }
 
   static Future<List<Map<String, dynamic>>> queryAll() async {
-    return await _db!.query('my_little_senior_dev');
+    return await _db!.query('coding_mooner');
   }
 
   static Future<void> delete(int id) async {
     await _db!.delete(
-      'my_little_senior_dev',
+      'coding_mooner',
       where: 'id = ?',
       whereArgs: [id],
     );

@@ -1,3 +1,4 @@
+import 'package:coding_mooner/historyPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'mainPageController.dart';
@@ -10,12 +11,17 @@ class MainPage extends StatelessWidget {
     final controller = Get.put(mainPageController());
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.pink,
         title: const Text('나의 작은 씨니어 개발자...코딩무너'),
         leading: Image(
           image: AssetImage('images/128.png'),
         ),
         actions: [
-          TextButton(onPressed: () {}, child: const Text('기록보기')),
+          TextButton(
+              onPressed: () {
+                Get.to(() => HistoryPage());
+              },
+              child: const Text('기록보기')),
           TextButton(
               onPressed: () {
                 Get.dialog(
@@ -86,6 +92,7 @@ class MainPage extends StatelessWidget {
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
+                              alignLabelWithHint: true,
                               labelText: '코드를 입력하세요',
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: const BorderSide(

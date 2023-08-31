@@ -1,3 +1,4 @@
+import 'package:coding_mooner/services/db.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -39,7 +40,7 @@ class mainPageController extends GetxController {
       String result = response.body;
 
       print("1 : " + result);
-      List resultList = result.split("}");
+      List resultList = result.split(',"done":false}');
       List preJsonList = resultList.map((e) => e + "}").toList();
       preJsonList.removeLast();
       preJsonList.removeLast();
@@ -52,6 +53,8 @@ class mainPageController extends GetxController {
 
       print("3 : " + finalResult);
       answer.value = finalResult;
+
+      DB.insert(question, finalResult);
     } catch (e) {
       print("error : " + e.toString());
 
