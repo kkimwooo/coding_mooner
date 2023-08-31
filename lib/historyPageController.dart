@@ -16,6 +16,7 @@ class HistoryPageController extends GetxController {
   }
 
   findHistoryFromList(String question) {
-    historyList.value = firstHistoryList.where((element) => element.question.contains(question)).toList();
+    historyList.value =
+        firstHistoryList.where((element) => element.question.toLowerCase().contains(question.toLowerCase())).toList();
   }
 }
