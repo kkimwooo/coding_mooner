@@ -13,13 +13,22 @@ class mainPageController extends GetxController {
 
   getAnswer() async {
     print("getAnswer start");
+    if (textController.value.text == "") {
+      Get.dialog(
+        AlertDialog(
+          title: const Text("에러"),
+          content: Text("질문을 해야 답을 주지."),
+        ),
+      );
+      return;
+    }
 
     loading.value = true;
 
     var question = textController.value.text;
     var url = Uri.parse('http://localhost:11434/api/generate');
     var data = {
-      "model": "llama2",
+      "model": "codellama",
       "prompt": question,
     };
     var body = json.encode(data);

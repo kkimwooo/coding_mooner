@@ -14,6 +14,19 @@ class MainPage extends StatelessWidget {
         leading: Image(
           image: AssetImage('images/128.png'),
         ),
+        actions: [
+          TextButton(onPressed: () {}, child: const Text('기록보기')),
+          TextButton(
+              onPressed: () {
+                Get.dialog(
+                  AlertDialog(
+                    title: const Text("도움말"),
+                    content: Text("Ollama 설치 가이드, 사용법 등에 대한 도움말이 들어갈 예정입니다."),
+                  ),
+                );
+              },
+              child: const Text('도움말')),
+        ],
       ),
       body: ListView(
         children: [
