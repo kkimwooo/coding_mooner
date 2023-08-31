@@ -40,7 +40,7 @@ class mainPageController extends GetxController {
 
     var url = Uri.parse('http://localhost:11434/api/generate');
     var data = {
-      "model": modelTextController.value.text == "" ? "codellama" : modelTextController.value.text,
+      "model": modelTextController.value.text == "" ? "codellama:13b-instruct" : modelTextController.value.text,
       "prompt": question,
     };
     var body = json.encode(data);

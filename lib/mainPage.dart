@@ -66,7 +66,11 @@ class MainPage extends StatelessWidget {
                               ),
                               DropdownMenuItem(
                                 value: "tc",
-                                child: Text("Test Code"),
+                                child: Text("Test Code 생성"),
+                              ),
+                              DropdownMenuItem(
+                                value: "TDD",
+                                child: Text("TDD방식으로 구현코드 생성", style: TextStyle(fontSize: 12),),
                               ),
                               DropdownMenuItem(
                                 value: "sql",
@@ -78,14 +82,21 @@ class MainPage extends StatelessWidget {
                               //print(value);
                               if (value == "sql") {
                                 controller.subType.value = "mysql";
-                              } else {
-                                controller.subType.value = "JAVA";
+                              } else if(value == "TDD") {
+                                controller.subType.value = "";
+                              }
+                              else {
+                                controller.subType.value = "Spring";
                               }
                               controller.mainType.value = value!;
                             }),
                         controller.mainType.value == "codeReview" || controller.mainType.value == "tc"
                             ? DropdownButton(
                                 items: const [
+                                    DropdownMenuItem(
+                                      value: "Spring",
+                                      child: Text("Spring"),
+                                    ),
                                     DropdownMenuItem(
                                       value: "JAVA",
                                       child: Text("JAVA"),
@@ -104,7 +115,7 @@ class MainPage extends StatelessWidget {
                                   //print(value);
                                   controller.subType.value = value!;
                                 })
-                            : DropdownButton(
+                            : controller.mainType.value=="sql"? DropdownButton(
                                 items: const [
                                     DropdownMenuItem(
                                       value: "mysql",
@@ -123,15 +134,15 @@ class MainPage extends StatelessWidget {
                                 onChanged: (value) {
                                   print(value);
                                   controller.subType.value = value!;
-                                }),
+                                }):SizedBox.shrink(),
                         SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 0.1,
+                            width: MediaQuery.sizeOf(context).width * 0.18,
                             height: MediaQuery.sizeOf(context).height * 0.05,
                             child: TextField(
                                 controller: controller.modelTextController,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
-                                  hintText: 'codellama',
+                                  hintText: 'codellama:13b-instruct',
                                 ))),
                         TextButton(
                           style: ButtonStyle(
