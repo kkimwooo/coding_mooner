@@ -1,5 +1,6 @@
 import 'package:coding_mooner/historyPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import 'mainPageController.dart';
@@ -342,6 +343,27 @@ class MainPage extends StatelessWidget {
                           ? Image.asset("images/coding_mooner_black.jpg", width: 500, height: 500, fit: BoxFit.contain)
                           : ListView(
                               children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                        onPressed: () {
+                                          Clipboard.setData(ClipboardData(text: controller.answer.value));
+                                          Get.showSnackbar(const GetSnackBar(
+                                            title: "복사 완료",
+                                            message: "클립보드에 복사되었습니다.",
+                                            duration: Duration(seconds: 3),
+                                            snackPosition: SnackPosition.TOP,
+                                            backgroundColor: Colors.lightBlue,
+                                            margin: EdgeInsets.all(8),
+                                            borderRadius: 8,
+                                            isDismissible: true,
+                                            forwardAnimationCurve: Curves.easeOutBack,
+                                          ));
+                                        },
+                                        icon: const Icon(Icons.copy)),
+                                  ],
+                                ),
                                 MarkdownBody(
                                   data: controller.answer.value,
                                   selectable: true,
