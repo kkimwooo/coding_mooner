@@ -100,10 +100,10 @@ class MainPage extends StatelessWidget {
                 Get.showSnackbar(const GetSnackBar(
                   title: "업데이트 완료",
                   message: "최신 프롬프트로 업데이트!!!",
-                  duration: const Duration(seconds: 3),
+                  duration: Duration(seconds: 3),
                   snackPosition: SnackPosition.TOP,
                   backgroundColor: Colors.lightBlue,
-                  margin: const EdgeInsets.all(8),
+                  margin: EdgeInsets.all(8),
                   borderRadius: 8,
                   isDismissible: true,
                   forwardAnimationCurve: Curves.easeOutBack,
@@ -112,7 +112,7 @@ class MainPage extends StatelessWidget {
               child: const Text('업데이트')),
           TextButton(
               onPressed: () {
-                Get.to(() => HistoryPage());
+                Get.to(() => const HistoryPage());
               },
               child: const Text('기록보기')),
           TextButton(
@@ -153,11 +153,15 @@ class MainPage extends StatelessWidget {
                             items: const [
                               DropdownMenuItem(
                                 value: "codeReview",
-                                child: Text("코드리뷰"),
+                                child: Text("코드 리뷰 해줘"),
+                              ),
+                              DropdownMenuItem(
+                                value: "explain",
+                                child: Text("코드 설명 해줘"),
                               ),
                               DropdownMenuItem(
                                 value: "tc",
-                                child: Text("Test Code 생성"),
+                                child: Text("Test Code 좀..."),
                               ),
                               DropdownMenuItem(
                                 value: "TDD",
@@ -168,7 +172,11 @@ class MainPage extends StatelessWidget {
                               ),
                               DropdownMenuItem(
                                 value: "sql",
-                                child: Text("SQL 생성"),
+                                child: Text("SQL 만들어줘"),
+                              ),
+                              DropdownMenuItem(
+                                value: "etc",
+                                child: Text("아무거나"),
                               ),
                             ],
                             value: controller.mainType.value,
@@ -183,7 +191,9 @@ class MainPage extends StatelessWidget {
                               }
                               controller.mainType.value = value!;
                             }),
-                        controller.mainType.value == "codeReview" || controller.mainType.value == "tc"
+                        controller.mainType.value == "codeReview" ||
+                                controller.mainType.value == "tc" ||
+                                controller.mainType.value == "explain"
                             ? DropdownButton(
                                 items: const [
                                     DropdownMenuItem(
@@ -217,7 +227,7 @@ class MainPage extends StatelessWidget {
                                         ),
                                         DropdownMenuItem(
                                           value: "Oracle",
-                                          child: Text("oracle"),
+                                          child: Text("Oracle"),
                                         ),
                                         DropdownMenuItem(
                                           value: "auroraDB",
@@ -226,10 +236,9 @@ class MainPage extends StatelessWidget {
                                       ],
                                     value: controller.subType.value,
                                     onChanged: (value) {
-                                      print(value);
                                       controller.subType.value = value!;
                                     })
-                                : SizedBox.shrink(),
+                                : const SizedBox.shrink(),
                         SizedBox(
                             width: MediaQuery.sizeOf(context).width * 0.18,
                             height: MediaQuery.sizeOf(context).height * 0.05,
@@ -297,7 +306,7 @@ class MainPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("images/loading.gif", width: 500, height: 500, fit: BoxFit.contain),
-                          SizedBox(
+                          const SizedBox(
                             height: 50,
                           ),
                           SizedBox(
@@ -333,7 +342,11 @@ class MainPage extends StatelessWidget {
                           ? Image.asset("images/coding_mooner_black.jpg", width: 500, height: 500, fit: BoxFit.contain)
                           : ListView(
                               children: [
-                                MarkdownBody(data: controller.answer.value, styleSheet: mdStyle),
+                                MarkdownBody(
+                                  data: controller.answer.value,
+                                  selectable: true,
+                                  styleSheet: mdStyle,
+                                ),
                               ],
                             ),
                     ),
