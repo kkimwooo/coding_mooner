@@ -240,15 +240,6 @@ class MainPage extends StatelessWidget {
                                       controller.subType.value = value!;
                                     })
                                 : const SizedBox.shrink(),
-                        SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 0.18,
-                            height: MediaQuery.sizeOf(context).height * 0.05,
-                            child: TextField(
-                                controller: controller.modelTextController,
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'codellama:13b-instruct',
-                                ))),
                         TextButton(
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.white),
