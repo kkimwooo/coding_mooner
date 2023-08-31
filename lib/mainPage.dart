@@ -329,11 +329,13 @@ class MainPage extends StatelessWidget {
                     )
                   : Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: ListView(
-                        children: [
-                          MarkdownBody(data: controller.answer.value, styleSheet: mdStyle),
-                        ],
-                      ),
+                      child: controller.answer.value == ''
+                          ? Image.asset("images/coding_mooner_black.jpg", width: 500, height: 500, fit: BoxFit.contain)
+                          : ListView(
+                              children: [
+                                MarkdownBody(data: controller.answer.value, styleSheet: mdStyle),
+                              ],
+                            ),
                     ),
             ),
           ),
