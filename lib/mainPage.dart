@@ -120,7 +120,7 @@ class MainPage extends StatelessWidget {
               onPressed: () {
                 Get.dialog(
                   AlertDialog(
-                    title: Text("도움말"),
+                    title: Text("반드시 먼저 Ollama를 로컬 서버에서 실행해야 합니다!"),
                     content: MarkdownBody(
                         data:
                             '### ollama 설치 및 실행 가이드 \n\n https://github.com/jmorganca/ollama 접속 \n\n1.1.Building(codellama:13b-instruct) \n\n1.2.Run a model(codellama:13b-instruct)',

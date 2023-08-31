@@ -71,8 +71,8 @@ class mainPageController extends GetxController {
 
       Get.dialog(
         const AlertDialog(
-          title: Text("에러"),
-          content: Text("미안하다...에러 났다..."),
+          title: Text("미안...에러야..."),
+          content: Text("로컬에 Ollama는 실행 됐어? 모르면 도움말 확인!"),
         ),
       );
     } finally {
