@@ -70,7 +70,10 @@ class MainPage extends StatelessWidget {
                               ),
                               DropdownMenuItem(
                                 value: "TDD",
-                                child: Text("TDD방식으로 구현코드 생성", style: TextStyle(fontSize: 12),),
+                                child: Text(
+                                  "TDD방식으로 구현코드 생성",
+                                  style: TextStyle(fontSize: 12),
+                                ),
                               ),
                               DropdownMenuItem(
                                 value: "sql",
@@ -82,10 +85,9 @@ class MainPage extends StatelessWidget {
                               //print(value);
                               if (value == "sql") {
                                 controller.subType.value = "mysql";
-                              } else if(value == "TDD") {
+                              } else if (value == "TDD") {
                                 controller.subType.value = "";
-                              }
-                              else {
+                              } else {
                                 controller.subType.value = "Spring";
                               }
                               controller.mainType.value = value!;
@@ -115,26 +117,28 @@ class MainPage extends StatelessWidget {
                                   //print(value);
                                   controller.subType.value = value!;
                                 })
-                            : controller.mainType.value=="sql"? DropdownButton(
-                                items: const [
-                                    DropdownMenuItem(
-                                      value: "mysql",
-                                      child: Text("MY SQL"),
-                                    ),
-                                    DropdownMenuItem(
-                                      value: "Oracle",
-                                      child: Text("oracle"),
-                                    ),
-                                    DropdownMenuItem(
-                                      value: "auroraDB",
-                                      child: Text("Aurora DB"),
-                                    ),
-                                  ],
-                                value: controller.subType.value,
-                                onChanged: (value) {
-                                  print(value);
-                                  controller.subType.value = value!;
-                                }):SizedBox.shrink(),
+                            : controller.mainType.value == "sql"
+                                ? DropdownButton(
+                                    items: const [
+                                        DropdownMenuItem(
+                                          value: "mysql",
+                                          child: Text("MY SQL"),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: "Oracle",
+                                          child: Text("oracle"),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: "auroraDB",
+                                          child: Text("Aurora DB"),
+                                        ),
+                                      ],
+                                    value: controller.subType.value,
+                                    onChanged: (value) {
+                                      print(value);
+                                      controller.subType.value = value!;
+                                    })
+                                : SizedBox.shrink(),
                         SizedBox(
                             width: MediaQuery.sizeOf(context).width * 0.18,
                             height: MediaQuery.sizeOf(context).height * 0.05,
@@ -190,25 +194,27 @@ class MainPage extends StatelessWidget {
               ),
             ),
           ),
-          Obx(() => Container(
-                width: MediaQuery.sizeOf(context).width * 0.5,
-                height: MediaQuery.sizeOf(context).height * 1,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(0, 82, 131, 0),
-                ),
-                child: controller.loading.value
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: ListView(
-                          children: [
-                            SelectableText(controller.answer.value),
-                          ],
-                        ),
+          Obx(
+            () => Container(
+              width: MediaQuery.sizeOf(context).width * 0.5,
+              height: MediaQuery.sizeOf(context).height * 1,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(0, 82, 131, 0),
+              ),
+              child: controller.loading.value
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: ListView(
+                        children: [
+                          SelectableText(controller.answer.value),
+                        ],
                       ),
-              )),
+                    ),
+            ),
+          ),
         ],
       ),
     );
