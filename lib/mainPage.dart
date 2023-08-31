@@ -34,130 +34,101 @@ class MainPage extends StatelessWidget {
               child: const Text('도움말')),
         ],
       ),
-      body: ListView(
+      body: Row(
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                width: MediaQuery.sizeOf(context).width * 0.5,
-                height: MediaQuery.sizeOf(context).height * 1,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 184, 216, 180),
-                ),
-                child: ListView(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                      child: Column(
-                        children: [
-                          Obx(
-                            () => Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                DropdownButton(
-                                    items: ["코드리뷰", "TC 생성", "??"].map((String value) {
-                                      return DropdownMenuItem(
-                                        value: value,
-                                        child: Text(value),
-                                      );
-                                    }).toList(),
-                                    value: controller.type.value,
-                                    onChanged: (value) {
-                                      print(value);
-                                      controller.type.value = value!;
-                                    }),
-                                TextButton(
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                                  ),
-                                  onPressed: () async {
-                                    controller.getAnswer();
-                                  },
-                                  child: const Text(
-                                    '도와줘',
-                                    style: TextStyle(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+          Container(
+            width: MediaQuery.sizeOf(context).width * 0.5,
+            height: MediaQuery.sizeOf(context).height * 1,
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 184, 216, 180),
+            ),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+              child: Column(
+                children: [
+                  Obx(
+                    () => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        DropdownButton(
+                            items: ["코드리뷰", "TC 생성", "??"].map((String value) {
+                              return DropdownMenuItem(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            value: controller.type.value,
+                            onChanged: (value) {
+                              print(value);
+                              controller.type.value = value!;
+                            }),
+                        TextButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.white),
                           ),
-                          TextFormField(
-                            controller: controller.textController,
-                            autofocus: true,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              alignLabelWithHint: true,
-                              labelText: '코드를 입력하세요',
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.black12,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.black12,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              errorBorder: UnderlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedErrorBorder: UnderlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.redAccent,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                            style: const TextStyle(
+                          onPressed: () async {
+                            controller.getAnswer();
+                          },
+                          child: const Text(
+                            '도와줘',
+                            style: TextStyle(
                               fontFamily: 'Readex Pro',
                               color: Colors.black,
                               fontWeight: FontWeight.normal,
                             ),
-                            maxLines: 100,
-                            //validator: _model.textControllerValidator.asValidator(context),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        TextFormField(
+                          controller: controller.textController,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: const InputDecoration(
+                            alignLabelWithHint: true,
+                            labelText: '코드를 입력하세요',
+                          ),
+                          style: const TextStyle(
+                            fontFamily: 'Readex Pro',
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          maxLines: 100,
+                          //validator: _model.textControllerValidator.asValidator(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              Obx(() => Container(
-                    child: controller.loading.value
-                        ? const Center(
-                            child: CircularProgressIndicator(),
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: ListView(
-                              children: [
-                                Text(controller.answer.value),
-                              ],
-                            ),
-                          ),
-                    width: MediaQuery.sizeOf(context).width * 0.5,
-                    height: MediaQuery.sizeOf(context).height * 1,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(0, 82, 131, 236),
-                    ),
-                  )),
-            ],
+            ),
           ),
+          Obx(() => Container(
+                child: controller.loading.value
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: ListView(
+                          children: [
+                            Text(controller.answer.value),
+                          ],
+                        ),
+                      ),
+                width: MediaQuery.sizeOf(context).width * 0.5,
+                height: MediaQuery.sizeOf(context).height * 1,
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(0, 82, 131, 0),
+                ),
+              )),
         ],
       ),
     );
