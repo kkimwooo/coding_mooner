@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:coding_mooner/model/history.dart';
 import 'package:coding_mooner/services/db.dart';
 import 'package:get/get.dart';
@@ -13,6 +11,4 @@ class HistoryPageController extends GetxController {
     var result2 = result.map((e) => History.fromJon(e)).toList();
     historyList.value = result2;
   }
-
-  getHistory() {}
 }

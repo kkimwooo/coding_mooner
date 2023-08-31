@@ -23,7 +23,7 @@ class HistoryPage extends StatelessWidget {
               onPressed: () {
                 Get.off(() => MainPage());
               },
-              child: const Text('질문하기')),
+              child: const Text('홈으로')),
           TextButton(
               onPressed: () {
                 Get.dialog(
@@ -52,7 +52,7 @@ class HistoryPage extends StatelessWidget {
                                 child: SingleChildScrollView(
                                   child: Column(
                                     children: [
-                                      Text(
+                                      SelectableText(
                                         "질문 ) " + e.question,
                                         style: const TextStyle(fontSize: 20),
                                       ),
@@ -60,7 +60,7 @@ class HistoryPage extends StatelessWidget {
                                         color: Colors.black,
                                         thickness: 1,
                                       ),
-                                      Text(
+                                      SelectableText(
                                         "답변 ) " + e.answer,
                                         style: const TextStyle(fontSize: 20),
                                       ),

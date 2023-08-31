@@ -19,8 +19,17 @@ class MainPage extends StatelessWidget {
         actions: [
           TextButton(
               onPressed: () {
-                controller.downloadFile();
-                print("업데이트 버튼 클릭");
+                Get.showSnackbar(const GetSnackBar(
+                  title: "업데이트 완료",
+                  message: "최신 프롬프트로 업데이트!!!",
+                  duration: const Duration(seconds: 3),
+                  snackPosition: SnackPosition.TOP,
+                  backgroundColor: Colors.lightBlue,
+                  margin: const EdgeInsets.all(8),
+                  borderRadius: 8,
+                  isDismissible: true,
+                  forwardAnimationCurve: Curves.easeOutBack,
+                ));
               },
               child: const Text('업데이트')),
           TextButton(
