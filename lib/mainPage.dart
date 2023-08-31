@@ -12,81 +12,80 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(mainPageController());
 
-    
     MarkdownStyleSheet mdStyle = MarkdownStyleSheet(
-                              h1: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 30,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              h2: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 25,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              h3: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              h4: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              h5: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 10,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              h6: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 5,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              p: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              blockquote: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              strong: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              em: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                              ),
-                              code: const TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                backgroundColor: Colors.transparent,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              codeblockPadding: const EdgeInsets.all(10),
-                              codeblockDecoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            );
+      h1: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 30,
+        fontWeight: FontWeight.normal,
+      ),
+      h2: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 25,
+        fontWeight: FontWeight.normal,
+      ),
+      h3: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 20,
+        fontWeight: FontWeight.normal,
+      ),
+      h4: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+      h5: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 10,
+        fontWeight: FontWeight.normal,
+      ),
+      h6: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 5,
+        fontWeight: FontWeight.normal,
+      ),
+      p: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+      blockquote: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+      strong: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+      em: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+      code: const TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.black,
+        backgroundColor: Colors.transparent,
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+      ),
+      codeblockPadding: const EdgeInsets.all(10),
+      codeblockDecoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -121,12 +120,11 @@ class MainPage extends StatelessWidget {
                 Get.dialog(
                   AlertDialog(
                     title: Text("도움말"),
-                    content: 
-                      MarkdownBody(
-                          data:'### ollama 설치 및 실행 가이드 \n\n https://github.com/jmorganca/ollama 접속 \n\n1.1.Building(codellama:13b-instruct) \n\n1.2.Run a model(codellama:13b-instruct)',
-                          selectable: true,
-                          styleSheet: mdStyle
-                      ),
+                    content: MarkdownBody(
+                        data:
+                            '### ollama 설치 및 실행 가이드 \n\n https://github.com/jmorganca/ollama 접속 \n\n1.1.Building(codellama:13b-instruct) \n\n1.2.Run a model(codellama:13b-instruct)',
+                        selectable: true,
+                        styleSheet: mdStyle),
                   ),
                 );
               },
@@ -270,7 +268,7 @@ class MainPage extends StatelessWidget {
                           obscureText: false,
                           decoration: const InputDecoration(
                             alignLabelWithHint: true,
-                            labelText: '코드를 입력하세요',
+                            labelText: '코드/요구사항을 입력해주세요',
                           ),
                           style: const TextStyle(
                             fontFamily: 'Readex Pro',
@@ -333,10 +331,7 @@ class MainPage extends StatelessWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: ListView(
                         children: [
-                          MarkdownBody(
-                            data: controller.answer.value,
-                            styleSheet: mdStyle
-                          ),
+                          MarkdownBody(data: controller.answer.value, styleSheet: mdStyle),
                         ],
                       ),
                     ),
