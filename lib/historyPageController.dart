@@ -7,7 +7,6 @@ class HistoryPageController extends GetxController {
 
   getAllHistoryFromDB() async {
     var result = await DB.queryAll();
-    // historyList.value = (await DB.queryAll()).cast<History>();
     var result2 = result.map((e) => History.fromJon(e)).toList();
     historyList.value = result2;
   }
