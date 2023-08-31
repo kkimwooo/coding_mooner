@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import 'mainPageController.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -213,15 +214,34 @@ class MainPage extends StatelessWidget {
               child: controller.loading.value
                   ? Center(
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("images/loading.gif", width: 500, height: 500, fit: BoxFit.contain),
-                          const Text(
-                            "무너는 고민 중...",
-                            style: TextStyle(
-                              fontFamily: 'Readex Pro',
-                              color: Colors.black,
-                              fontSize: 30,
-                              fontWeight: FontWeight.normal,
+                          SizedBox(
+                            height: 50,
+                          ),
+                          SizedBox(
+                            width: 250.0,
+                            child: DefaultTextStyle(
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 32.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              child: AnimatedTextKit(
+                                repeatForever: true,
+                                pause: const Duration(milliseconds: 2000),
+                                animatedTexts: [
+                                  FadeAnimatedText('아 이거~'),
+                                  FadeAnimatedText('문어는 고민 중'),
+                                  FadeAnimatedText('이 정도쯤이야!'),
+                                  FadeAnimatedText('음....'),
+                                  FadeAnimatedText('잠깐만...아는거야'),
+                                  FadeAnimatedText('거의 다 풀었어'),
+                                  FadeAnimatedText('1초만 더 기다려줘'),
+                                  FadeAnimatedText('5초만 더 기다려줘'),
+                                ],
+                              ),
                             ),
                           ),
                         ],
