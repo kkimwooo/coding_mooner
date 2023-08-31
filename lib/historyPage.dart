@@ -2,6 +2,7 @@ import 'package:coding_mooner/historyPageController.dart';
 import 'package:coding_mooner/mainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
@@ -9,7 +10,7 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HistoryPageController());
-    controller.getHistoryFromDB();
+    controller.getAllHistoryFromDB();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
@@ -38,10 +39,51 @@ class HistoryPage extends StatelessWidget {
       body: Obx(() => ListView(
             children: controller.historyList
                 .map((e) => Card(
+                      color: Colors.pink[50],
+                      surfaceTintColor: Color(0xFFE0E0E0),
                       child: ListTile(
-                        title: Text(e.question.substring(0, 20)),
-                        subtitle: Text(e.answer),
-                        trailing: Text(e.date),
+                        onTap: () {
+                          Get.dialog(
+                            AlertDialog(
+                              title: Text(e.date),
+                              content: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height: MediaQuery.of(context).size.height * 0.8,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        "질문 ) " + e.question,
+                                        style: const TextStyle(fontSize: 20),
+                                      ),
+                                      const Divider(
+                                        color: Colors.black,
+                                        thickness: 1,
+                                      ),
+                                      Text(
+                                        "답변 ) " + e.answer,
+                                        style: const TextStyle(fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: const Text('닫기')),
+                              ],
+                            ),
+                          );
+                        },
+                        title: Text(e.question.length >= 100
+                            ? "Q) " + (e.question.substring(0, 100) + "...")
+                            : "Q) " + e.question),
+                        subtitle: Text(
+                            e.answer.length >= 100 ? "A) " + e.answer.substring(0, 100) + "..." : "A) " + e.answer),
+                        trailing: Text(new DateFormat('y/M/d h:mm a').format(DateTime.parse(e.date))),
                       ),
                     ))
                 .toList(),

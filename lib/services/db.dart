@@ -41,7 +41,6 @@ class DB {
 
   static Future<List<Map<String, dynamic>>> queryAll() async {
     return await _db!.query('coding_mooner');
-    print("queryAll");
   }
 
   static Future<void> delete(int id) async {
