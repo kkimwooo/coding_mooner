@@ -53,17 +53,80 @@ class MainPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         DropdownButton(
-                            items: ["코드리뷰", "TC 생성", "??"].map((String value) {
-                              return DropdownMenuItem(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            value: controller.type.value,
+                            items: const [
+                              DropdownMenuItem(
+                                value: "codeReview",
+                                child: Text("코드리뷰"),
+                              ),
+                              DropdownMenuItem(
+                                value: "tc",
+                                child: Text("Test Code"),
+                              ),
+                              DropdownMenuItem(
+                                value: "sql",
+                                child: Text("SQL 생성"),
+                              ),
+                            ],
+                            value: controller.mainType.value,
                             onChanged: (value) {
                               print(value);
-                              controller.type.value = value!;
+                              if (value == "sql") {
+                                controller.subType.value = "mysql";
+                              } else {
+                                controller.subType.value = "JAVA";
+                              }
+                              controller.mainType.value = value!;
                             }),
+                        controller.mainType.value == "codeReview" || controller.mainType.value == "tc"
+                            ? DropdownButton(
+                                items: const [
+                                    DropdownMenuItem(
+                                      value: "JAVA",
+                                      child: Text("JAVA"),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: "PYTHON",
+                                      child: Text("PYTHON"),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: "JavaScript",
+                                      child: Text("Java Script"),
+                                    ),
+                                  ],
+                                value: controller.subType.value,
+                                onChanged: (value) {
+                                  print(value);
+                                  controller.subType.value = value!;
+                                })
+                            : DropdownButton(
+                                items: const [
+                                    DropdownMenuItem(
+                                      value: "mysql",
+                                      child: Text("MY SQL"),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: "Oracle",
+                                      child: Text("oracle"),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: "auroraDB",
+                                      child: Text("Aurora DB"),
+                                    ),
+                                  ],
+                                value: controller.subType.value,
+                                onChanged: (value) {
+                                  print(value);
+                                  controller.subType.value = value!;
+                                }),
+                        SizedBox(
+                            width: MediaQuery.sizeOf(context).width * 0.1,
+                            height: MediaQuery.sizeOf(context).height * 0.05,
+                            child: TextField(
+                                controller: controller.modelTextController,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  hintText: 'codellama',
+                                ))),
                         TextButton(
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -72,7 +135,7 @@ class MainPage extends StatelessWidget {
                             controller.getAnswer();
                           },
                           child: const Text(
-                            '도와줘',
+                            '도와줘(클릭)',
                             style: TextStyle(
                               fontFamily: 'Readex Pro',
                               color: Colors.black,
@@ -88,7 +151,7 @@ class MainPage extends StatelessWidget {
                       shrinkWrap: true,
                       children: [
                         TextFormField(
-                          controller: controller.textController,
+                          controller: controller.questionTextController,
                           autofocus: true,
                           obscureText: false,
                           decoration: const InputDecoration(
@@ -111,6 +174,11 @@ class MainPage extends StatelessWidget {
             ),
           ),
           Obx(() => Container(
+                width: MediaQuery.sizeOf(context).width * 0.5,
+                height: MediaQuery.sizeOf(context).height * 1,
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(0, 82, 131, 0),
+                ),
                 child: controller.loading.value
                     ? const Center(
                         child: CircularProgressIndicator(),
@@ -123,11 +191,6 @@ class MainPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                width: MediaQuery.sizeOf(context).width * 0.5,
-                height: MediaQuery.sizeOf(context).height * 1,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(0, 82, 131, 0),
-                ),
               )),
         ],
       ),
