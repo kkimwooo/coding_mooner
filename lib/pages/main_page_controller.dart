@@ -58,9 +58,9 @@ class mainPageController extends GetxController {
       //print("2 : $preJsonList");
 
       var finalResult = "";
-      preJsonList.forEach((element) {
+      for (var element in preJsonList) {
         finalResult += json.decode(element)["response"];
-      });
+      }
 
       //print("3 : $finalResult");
       answer.value = finalResult;
@@ -69,7 +69,7 @@ class mainPageController extends GetxController {
     } catch (e) {
       Get.dialog(
         AlertDialog(
-          title: Text("미안...에러야..."),
+          title: const Text("미안...에러야..."),
           content: Text("로컬에 Ollama는 실행 됐어? 모르면 도움말 확인! \n\n error : $e "),
         ),
       );

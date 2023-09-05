@@ -1,5 +1,6 @@
 import 'package:coding_mooner/pages/history_page_controller.dart';
 import 'package:coding_mooner/pages/main_page.dart';
+import 'package:coding_mooner/styles/Styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
@@ -71,80 +72,7 @@ class HistoryPage extends StatelessWidget {
                                           children: [
                                             MarkdownBody(
                                               data: "질문 ) ${e.question}",
-                                              styleSheet: MarkdownStyleSheet(
-                                                h1: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 30,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h2: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h3: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h4: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h5: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h6: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 5,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                p: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                blockquote: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                strong: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                em: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                code: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  backgroundColor: Colors.transparent,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                                codeblockPadding: const EdgeInsets.all(10),
-                                                codeblockDecoration: BoxDecoration(
-                                                  color: Colors.grey[200],
-                                                  borderRadius: BorderRadius.circular(10),
-                                                ),
-                                              ),
+                                              styleSheet: mdStyle,
                                               selectable: true,
                                             ),
                                             const Divider(
@@ -153,80 +81,7 @@ class HistoryPage extends StatelessWidget {
                                             ),
                                             MarkdownBody(
                                               data: "답변 ) ${e.answer}",
-                                              styleSheet: MarkdownStyleSheet(
-                                                h1: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 30,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h2: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h3: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h4: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h5: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                h6: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 5,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                p: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                blockquote: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                strong: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                em: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                                code: const TextStyle(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: Colors.black,
-                                                  backgroundColor: Colors.transparent,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                                codeblockPadding: const EdgeInsets.all(10),
-                                                codeblockDecoration: BoxDecoration(
-                                                  color: Colors.grey[200],
-                                                  borderRadius: BorderRadius.circular(10),
-                                                ),
-                                              ),
+                                              styleSheet: mdStyle,
                                               selectable: true,
                                             ),
                                           ],
@@ -244,12 +99,11 @@ class HistoryPage extends StatelessWidget {
                                 );
                               },
                               title: Text(e.question.length >= 100
-                                  ? "Q) " + (e.question.substring(0, 100) + "...")
-                                  : "Q) " + e.question),
-                              subtitle: Text(e.answer.length >= 100
-                                  ? "A) " + e.answer.substring(0, 100) + "..."
-                                  : "A) " + e.answer),
-                              trailing: Text(new DateFormat('y/M/d h:mm a').format(DateTime.parse(e.date))),
+                                  ? "Q) ${e.question.substring(0, 100)}..."
+                                  : "Q) ${e.question}"),
+                              subtitle: Text(
+                                  e.answer.length >= 100 ? "A) ${e.answer.substring(0, 100)}..." : "A) ${e.answer}"),
+                              trailing: Text(DateFormat('y/M/d h:mm a').format(DateTime.parse(e.date))),
                             ),
                           ))
                       .toList(),

@@ -4,7 +4,7 @@ class DB {
   static Database? _db;
 
   static Future<void> init() async {
-    print("init DB");
+//    print("init DB");
     _db = await openDatabase(
       'coding_mooner.db',
       version: 1,
@@ -26,7 +26,7 @@ class DB {
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-    print("inserted question: $question, answer: $answer, date: ${DateTime.now().toString()}");
+//    print("inserted question: $question, answer: $answer, date: ${DateTime.now().toString()}");
   }
 
   //query one item
