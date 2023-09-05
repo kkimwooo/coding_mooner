@@ -1,5 +1,5 @@
-import 'package:coding_mooner/historyPageController.dart';
-import 'package:coding_mooner/mainPage.dart';
+import 'package:coding_mooner/pages/historyPageController.dart';
+import 'package:coding_mooner/pages/mainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';

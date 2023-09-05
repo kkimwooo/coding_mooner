@@ -1,4 +1,4 @@
-import 'package:coding_mooner/historyPage.dart';
+import 'package:coding_mooner/pages/historyPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
