@@ -1,9 +1,9 @@
-import 'package:coding_mooner/pages/historyPage.dart';
+import 'package:coding_mooner/pages/history_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
-import 'mainPageController.dart';
+import 'main_page_controller.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 class MainPage extends StatelessWidget {

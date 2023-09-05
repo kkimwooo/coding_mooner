@@ -1,7 +1,7 @@
 import 'package:coding_mooner/services/db.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:coding_mooner/pages/mainPage.dart';
+import 'package:coding_mooner/pages/main_page.dart';
 
 void main() {
   runApp(const GetMaterialApp(home: MyApp()));

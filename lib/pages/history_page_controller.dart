@@ -1,6 +1,5 @@
 import 'package:coding_mooner/model/history.dart';
 import 'package:coding_mooner/services/db.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HistoryPageController extends GetxController {
