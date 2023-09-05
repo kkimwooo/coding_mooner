@@ -1,6 +1,7 @@
 import 'package:coding_mooner/components/display_answer.dart';
 import 'package:coding_mooner/components/input_question.dart';
 import 'package:coding_mooner/pages/history_page.dart';
+import 'package:coding_mooner/services/run_shell_script.dart';
 import 'package:coding_mooner/styles/Styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -22,6 +23,16 @@ class MainPage extends StatelessWidget {
           image: AssetImage('images/128.png'),
         ),
         actions: [
+          TextButton(
+            onPressed: () async {
+              await RunShellScript.runShellScript();
+            },
+            child: const Text('Ollama 실행'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Ollama 종료'),
+          ),
           TextButton(
               onPressed: () {
                 Get.showSnackbar(const GetSnackBar(
